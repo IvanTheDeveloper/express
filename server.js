@@ -13,12 +13,12 @@ app.get("/", (req, res) => {
 app.get("/send", async (req, res) => {
   try {
     const { email, subject, message } = req.query;
-
     const info = await sendEmail(email, subject, message);
-    res.json("Correo enviado exitosamente: " + info);
+    console.log("Email sent successfully: ", info);
+    res.json("Email sent successfully: ", info);
   } catch (error) {
-    console.error("Error al enviar el correo: ", error);
-    res.status(500).json("Error al enviar el correo: " + error);
+    console.error("Error sending email: ", error);
+    res.status(500).json("Error sending email: ", error);
   }
 });
 
