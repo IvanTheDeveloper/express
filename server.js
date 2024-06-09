@@ -1,17 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-
-const cors = require("cors");
-app.use(cors());
-
 const sendEmail = require("./mailer");
 
 app.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-app.get("/send", async (req, res) => {
+app.get("/mail", async (req, res) => {
   try {
     const { email, subject, message } = req.query;
 
