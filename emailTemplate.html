@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: #3F51B5;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .message {
+            padding: 10px;
+        }
+
+        .socials {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .separator {
+            border-top: 2px solid black;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            color: #666;
+        }
+
+        .column {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>PIXEL - REACT</h1>
+        </div>
+
+        <div class="content">
+            <p>Hello, you have received a new message:</p>
+            <p class="message">{{message}}</p>
+
+            <div class="column">
+                <span>From: {{sender}} on {{timestamp}}</span>
+                <span>Do not reply to this email.</span>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="socials">
+            <a href="https://ivandev.web.app/" target="_blank">
+                <span>Visit Web</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Pixel-React. All rights reserved.</p>
+    </div>
+
+</body>
+
+</html>

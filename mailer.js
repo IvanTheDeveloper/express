@@ -1,7 +1,18 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+const path = require("path");
 
-async function sendEmail(recipient, subject, message) {
+async function sendEmail(recipient, subject, message, sender = "default") {
   try {
+    const templatePath = path.join(__dirname, "emailTemplate.html");
+    let htmlTemplate = fs.readFileSync(templatePath, "utf8");
+    htmlTemplate = htmlTemplate.replace("{{message}}", message);
+    htmlTemplate = htmlTemplate.replace("{{sender}}", sender);
+    htmlTemplate = htmlTemplate.replace(
+      "{{timestamp}}",
+      new Date().toLocaleString()
+    );
+
     let transporter = nodemailer.createTransport({
       service: process.env.SERVICE,
       auth: {
@@ -14,7 +25,7 @@ async function sendEmail(recipient, subject, message) {
       from: process.env.EMAIL,
       to: recipient,
       subject: subject,
-      text: message,
+      html: htmlTemplate,
     };
 
     let info = await transporter.sendMail(mailOptions);
