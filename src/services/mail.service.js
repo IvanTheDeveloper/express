@@ -10,7 +10,7 @@ async function sendEmail(recipient, subject, message, sender = "default") {
       __dirname,
       "..",
       "views",
-      "emailTemplate.html"
+      "emailTemplate.view.html"
     );
     let htmlTemplate = fs.readFileSync(templatePath, "utf8");
     htmlTemplate = htmlTemplate.replace("{{message}}", message);
