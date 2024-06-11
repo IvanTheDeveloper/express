@@ -5,7 +5,10 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
-const router = require("./src/routes/mail.route");
+const mailRouter = require("./src/routes/mail.route");
+const sqlCrudRouter = require("./src/routes/sqlCrud.route");
+const logger = require("./src/middlewares/logger.middleware");
+const errorHandler = require("./src/middlewares/errorHandler.middleware");
 const app = express();
 
 app.use("/static", express.static(path.join(__dirname, "public")));
@@ -17,19 +20,17 @@ app.use(
   })
 );
 
+app.use(logger);
+
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
 
-app.use("/send", router);
+app.use("/mail", mailRouter);
 
-/* Error handler middleware */
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  console.error(err.message, err.stack);
-  res.status(statusCode).json({ message: err.message });
-  return;
-});
+app.use("/db", sqlCrudRouter);
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

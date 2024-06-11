@@ -4,10 +4,10 @@ const service = require("../services/mail.service");
 
 async function test(req, res, next) {
   try {
-    const info = await service.sendEmail(
+    const info = await service.sendMailjet(
       "ivan.v.h.2004@gmail.com",
       "subject",
-      "lorem"
+      "lorem ipsum"
     );
     console.log("Email sent successfully: ", info);
     res.status(200).json({ message: "Email sent successfully", info });
