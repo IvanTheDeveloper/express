@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "git": "git add . && git commit -m \"Commit message\" && git push origin main"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "nodemailer": "^6.9.13"
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.10.0",
+    "nodemailer": "^6.9.13",
+    "path": "^0.12.7"
   }
 }

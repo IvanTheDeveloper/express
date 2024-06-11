@@ -1,10 +1,17 @@
+//mail.service.js
+
 const nodemailer = require("nodemailer");
-const fs = require("fs");
 const path = require("path");
+const fs = require("fs");
 
 async function sendEmail(recipient, subject, message, sender = "default") {
   try {
-    const templatePath = path.join(__dirname, "emailTemplate.html");
+    const templatePath = path.join(
+      __dirname,
+      "..",
+      "views",
+      "emailTemplate.html"
+    );
     let htmlTemplate = fs.readFileSync(templatePath, "utf8");
     htmlTemplate = htmlTemplate.replace("{{message}}", message);
     htmlTemplate = htmlTemplate.replace("{{sender}}", sender);
@@ -14,15 +21,15 @@ async function sendEmail(recipient, subject, message, sender = "default") {
     );
 
     let transporter = nodemailer.createTransport({
-      service: process.env.SERVICE,
+      service: process.env.MAIL_SERVICE,
       auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
+        user: process.env.MAIL_ADDRESS,
+        pass: process.env.MAIL_PASSWORD,
       },
     });
 
     let mailOptions = {
-      from: process.env.EMAIL,
+      from: process.env.MAIL_ADDRESS,
       to: recipient,
       subject: subject,
       html: htmlTemplate,
@@ -37,4 +44,6 @@ async function sendEmail(recipient, subject, message, sender = "default") {
   }
 }
 
-module.exports = sendEmail;
+module.exports = {
+  sendEmail,
+};
