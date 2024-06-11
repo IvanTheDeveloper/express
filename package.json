@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "git": "git add . && git commit -m \"Commit message\" && git push origin main"
+    "push": "git add . && git commit -m \"Commit message\" && git push origin main"
   },
   "keywords": [],
   "author": "",
