@@ -1,7 +1,12 @@
 #.gitignore
 
-/node_modules/*
+# Node
+#/node_modules/*
 !/node_modules/.gitkeep
+
+# Environments
+/src/environments/*
+!/src/environments/.gitkeep
 
 /logs
 # .env
