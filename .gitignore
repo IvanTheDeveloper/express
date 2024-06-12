@@ -4,8 +4,11 @@
 /node_modules
 
 # Environments
-/src/environments/*
-!/src/environments/.gitkeep
+/environments/*
+!/environments/.gitkeep
 
-/logs
+# Logs
+/logs/*
+!/logs/.gitkeep
+
 # .env
