@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email</title>
+    <style>
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            padding: 50px;
+            width: fit-content;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: rgb(226, 226, 226);
+        }
+
+        form {
+            margin: 5%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="column card">
+        <h1>Test Form</h1>
+
+        <form action="/mail" method="post" class="column">
+            <label for="recipient">Recipient:</label>
+            <input type="email" id="recipient" name="recipient" required><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required><br>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea><br>
+            <label for="sender">(Optional) Sender:</label>
+            <input type="text" id="sender" name="sender"><br>
+            <button type="submit">Send Email</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/form", (req, res) => {
-  res.sendFile(path.join(__dirname, "src", "views", "form.html"));
+  res.sendFile(path.join(__dirname, "src", "views", "form.view.html"));
 });
 
 app.use("/mail", mailRouter);
