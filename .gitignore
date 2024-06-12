@@ -1,5 +1,7 @@
 #.gitignore
 
 /node_modules/*
+!/node_modules/.gitkeep
+
 /logs
 # .env
