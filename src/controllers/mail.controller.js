@@ -2,13 +2,10 @@
 
 const service = require("../services/mail.service");
 
-async function test(req, res, next) {
+async function send(req, res, next) {
   try {
-    const info = await service.sendMailjet(
-      "ivan.v.h.2004@gmail.com",
-      "subject",
-      "lorem ipsum"
-    );
+    const { recipient, subject, message, sender } = req.body;
+    const info = await service.sendEmail(recipient, subject, message, sender);
     console.log("Email sent successfully: ", info);
     res.status(200).json({ message: "Email sent successfully", info });
   } catch (err) {
@@ -17,10 +14,13 @@ async function test(req, res, next) {
   }
 }
 
-async function send(req, res, next) {
+async function test(req, res, next) {
   try {
-    const { email, subject, message } = req.query;
-    const info = await service.sendEmail(email, subject, message);
+    const info = await service.sendMailjet(
+      "ivan.v.h.2004@gmail.com",
+      "subject",
+      "lorem ipsum"
+    );
     console.log("Email sent successfully: ", info);
     res.status(200).json({ message: "Email sent successfully", info });
   } catch (err) {

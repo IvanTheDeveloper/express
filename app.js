@@ -11,7 +11,8 @@ const logger = require("./src/middlewares/logger.middleware");
 const errorHandler = require("./src/middlewares/errorHandler.middleware");
 const app = express();
 
-app.use("/static", express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(
@@ -24,6 +25,10 @@ app.use(logger);
 
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
+});
+
+app.get("/form", (req, res) => {
+  res.sendFile(path.join(__dirname, "src", "views", "form.html"));
 });
 
 app.use("/mail", mailRouter);
