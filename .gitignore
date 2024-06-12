@@ -1,7 +1,7 @@
 #.gitignore
 
 # Node
-/node_module
+/node_modules
 
 # Environments
 /environments/*
