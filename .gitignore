@@ -3,12 +3,9 @@
 # Node
 /node_modules
 
-# Environments
-/environments/*
-!/environments/.gitkeep
-
 # Logs
 /logs/*
 !/logs/.gitkeep
 
-# .env
+# Environments
+.env
